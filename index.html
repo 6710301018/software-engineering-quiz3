@@ -118,6 +118,294 @@
                 correct: 'b',
                 explanation: 'Protected branch ป้องกันไม่ให้มีการเขียนทับหรือ push โค้ดตรงๆ เข้าสู่กิ่งที่สำคัญ มักจะบังคับให้ต้องทำ Pull Request และผ่านการรีวิวหรือเทสต์ก่อนเสมอ'
             },
+            {
+                id: 6, type: 'mcq',
+                question: 'ข้อ 6: การประชุม retrospective ตอนท้าย iteration มักใช้รูปแบบ PMI หมายถึงอะไร',
+                options: {
+                    'a': 'People, Money, Idea',
+                    'b': 'Plan, Monitor, Improve',
+                    'c': 'Process, Method, Interface',
+                    'd': 'Plus, Minus, Interesting'
+                },
+                correct: 'd',
+                explanation: 'PMI ย่อมาจาก Plus (สิ่งที่ดี), Minus (สิ่งที่ควรปรับปรุง), Interesting (สิ่งที่น่าสนใจหรือควรทดลอง) เป็นเฟรมเวิร์กที่ใช้ในการทำ retrospective เพื่อให้ทีมได้สะท้อนผลการทำงาน'
+            },
+            {
+                id: 7, type: 'mcq',
+                question: 'ข้อ 7: coding standards มีเป้าหมายหลักเพื่ออะไร',
+                options: {
+                    'a': 'ทำให้โค้ดทำงานเร็วขึ้นเสมอ',
+                    'b': 'ปรับปรุงความสม่ำเสมอและความอ่านง่ายของโค้ด',
+                    'c': 'ลดการใช้ version control',
+                    'd': 'เพิ่มจำนวนบรรทัดโค้ดให้มากขึ้น'
+                },
+                correct: 'b',
+                explanation: 'Coding standards ช่วยให้โค้ดมีความสม่ำเสมอ อ่านง่าย เข้าใจง่าย และบำรุงรักษาได้ง่ายขึ้น ทำให้สมาชิกในทีมสามารถทำงานร่วมกันได้อย่างมีประสิทธิภาพ'
+            },
+            {
+                id: 8, type: 'mcq',
+                question: 'ข้อ 8: เหตุผลหลักที่แนะนำให้สร้าง feature branch แทนการแก้บน main โดยตรง',
+                options: {
+                    'a': 'เพราะ git ห้าม commit ที่ main',
+                    'b': 'เพื่อให้ main คงเป็นเวอร์ชันที่เสถียร และแยกงานที่ยังไม่เสร็จออกไป',
+                    'c': 'เพื่อให้ merge conflict เกิดบ่อยขึ้น',
+                    'd': 'เพื่อไม่ต้องเขียน test'
+                },
+                correct: 'b',
+                explanation: 'การสร้าง feature branch ช่วยให้ main branch คงเป็นเวอร์ชันที่เสถียรและพร้อมใช้งานเสมอ ในขณะที่งานที่กำลังพัฒนาหรือยังไม่เสร็จจะอยู่ใน branch แยก'
+            },
+            {
+                id: 9, type: 'mcq',
+                question: 'ข้อ 9: การประชุม Scrum แบบรายวันโดยทั่วไปใช้เวลาประมาณเท่าไร',
+                options: {
+                    'a': '2 ชั่วโมง',
+                    'b': '15 นาที',
+                    'c': '5 นาที',
+                    'd': '45 นาที'
+                },
+                correct: 'b',
+                explanation: 'Daily Scrum หรือ Daily Standup มักใช้เวลาประมาณ 15 นาที เพื่อให้ทีมอัพเดทความคืบหน้า แชร์ปัญหา และวางแผนงานของวันนั้นอย่างรวดเร็ว'
+            },
+            {
+                id: 10, type: 'mcq',
+                question: 'ข้อ 10: squash merge มีผลอย่างไรกับประวัติ commit',
+                options: {
+                    'a': 'รวมหลาย commit ใน branch ให้เหลือ commit เดียวตอน merge',
+                    'b': 'ทำให้ไม่ต้องทำ code review',
+                    'c': 'สร้าง branch ใหม่อัตโนมัติ',
+                    'd': 'ลบ remote branch ทันที'
+                },
+                correct: 'a',
+                explanation: 'Squash merge จะรวมหลาย commit ใน feature branch ให้เหลือเพียง commit เดียวก่อนที่จะ merge เข้า main ทำให้ประวัติ commit ดูสะอาดและเข้าใจง่ายขึ้น'
+            },
+            {
+                id: 11, type: 'mcq',
+                question: 'ข้อ 11: ข้อใด "ไม่ใช่" หนึ่งใน five Rs ของกระบวนการจัดการบั๊ก',
+                options: {
+                    'a': 'Reproducing (หรือ Reclassifying)',
+                    'b': 'Reporting bug',
+                    'c': 'Creating regression test',
+                    'd': 'Refactoring the entire codebase'
+                },
+                correct: 'd',
+                explanation: 'Five Rs ของการจัดการบั๊กประกอบด้วย Reporting, Reproducing, Reclassifying, Resolving, และ Regression testing การ Refactor ทั้งหมดไม่ใช่ส่วนหนึ่งของกระบวนการนี้'
+            },
+            {
+                id: 12, type: 'mcq',
+                question: 'ข้อ 12: ถ้าสร้างไฟล์ใหม่แต่ลืม add เข้า repo จะเกิดปัญหาอะไร',
+                options: {
+                    'a': 'โค้ดคุณพังทันทีในเครื่องคุณ',
+                    'b': 'git จะ add ไฟล์ให้อัตโนมัติเสมอ',
+                    'c': 'ไม่มีผลใด เพราะ commit จะรวมทุกไฟล์อยู่แล้ว',
+                    'd': 'คนอื่น pull แล้วโค้ดอาจรันไม่ได้เพราะไฟล์ไม่ถูก versioned'
+                },
+                correct: 'd',
+                explanation: 'ถ้าลืม add ไฟล์ใหม่เข้า git ไฟล์นั้นจะไม่ถูก track และไม่ถูก commit ทำให้เมื่อคนอื่น pull โค้ดไป จะไม่ได้ไฟล์นั้นและอาจทำให้โปรแกรมรันไม่ได้'
+            },
+            {
+                id: 13, type: 'mcq',
+                question: 'ข้อ 13: ทีมแบบ "two pizza team" โดยทั่วไปมีขนาดกี่คน',
+                options: {
+                    'a': '20-50 คน',
+                    'b': '2-3 คน',
+                    'c': '10-20 คน',
+                    'd': '4-9 คน'
+                },
+                correct: 'd',
+                explanation: 'Two pizza team คือทีมที่มีขนาดพอที่พิซซ่า 2 ถาดจะเลี้ยงได้ ซึ่งโดยทั่วไปคือประมาณ 4-9 คน เป็นขนาดที่เหมาะสมสำหรับการสื่อสารและทำงานร่วมกันอย่างมีประสิทธิภาพ'
+            },
+            {
+                id: 14, type: 'mcq',
+                question: 'ข้อ 14: rebase ต่างจาก merge ในมุมมองประวัติแบบใด',
+                options: {
+                    'a': 'rebase สร้าง merge commit เพิ่มเสมอ',
+                    'b': 'merge ทำให้ commit hash เปลี่ยนทุกครั้ง',
+                    'c': 'rebase ทำให้ประวัติเป็นเส้นตรงมากขึ้นโดยย้ายฐาน commit',
+                    'd': 'merge จะลบ commit เดิมทิ้ง'
+                },
+                correct: 'c',
+                explanation: 'Rebase จะย้าย commit ของ branch ไปวางบนฐานใหม่ ทำให้ประวัติ commit เป็นเส้นตรงและดูสะอาดกว่า ในขณะที่ merge จะสร้าง merge commit และรักษาประวัติแบบแยกกิ่ง'
+            },
+            {
+                id: 15, type: 'mcq',
+                question: 'ข้อ 15: ใน Scrum มักใช้คำว่าอะไรแทนคำว่า iteration',
+                options: {
+                    'a': 'Release',
+                    'b': 'Sprint',
+                    'c': 'Milestone',
+                    'd': 'Epic'
+                },
+                correct: 'b',
+                explanation: 'ใน Scrum ใช้คำว่า Sprint แทน iteration ซึ่งเป็นช่วงเวลาที่กำหนดไว้ (มักเป็น 1-4 สัปดาห์) สำหรับพัฒนาและส่งมอบงานที่สามารถใช้งานได้'
+            },
+            {
+                id: 18, type: 'mcq',
+                question: 'ข้อ 18: แนวทางที่แนะนำเกี่ยวกับการหมุนเวียนบทบาท Product Owner ในทีม Scrum คืออะไร',
+                options: {
+                    'a': 'ไม่ควรมี Product Owner ในทีมเล็ก',
+                    'b': 'ให้คนเดิมเป็น Product Owner ตลอดโครงการ',
+                    'c': 'ให้สมาชิกหมุนเวียนบทบาท Product Owner เปลี่ยนทุก iteration/sprint',
+                    'd': 'ให้ Scrum Lead เป็น Product Owner ด้วยเสมอ'
+                },
+                correct: 'b',
+                explanation: 'Product Owner ควรเป็นคนเดิมตลอดโครงการเพื่อรักษาความต่อเนื่องของวิสัยทัศน์และความเข้าใจในความต้องการของผลิตภัณฑ์ การเปลี่ยนบ่อยอาจทำให้เกิดความสับสนและไม่สอดคล้องกัน'
+            },
+            {
+                id: 19, type: 'mcq',
+                question: 'ข้อ 19: บทบาทใดใน Scrum ที่ทำหน้าที่เป็นตัวกันสิ่งรบกวนจากภายนอกและช่วยเอาอุปสรรคออก',
+                options: {
+                    'a': 'Product Owner',
+                    'b': 'QA Manager',
+                    'c': 'Scrum Lead',
+                    'd': 'Team'
+                },
+                correct: 'c',
+                explanation: 'Scrum Lead (หรือ Scrum Master) ทำหน้าที่ป้องกันทีมจากสิ่งรบกวนภายนอก ช่วยกำจัดอุปสรรค และทำให้แน่ใจว่าทีมสามารถทำงานได้อย่างมีประสิทธิภาพตามหลักการ Scrum'
+            },
+            {
+                id: 20, type: 'mcq',
+                question: 'ข้อ 20: Pull Request (PR) ถูกใช้เพื่อจุดประสงค์หลักใด',
+                options: {
+                    'a': 'ขอให้ลบ branch ทิ้ง',
+                    'b': 'ใช้เพื่อเปลี่ยนชื่อไฟล์อัตโนมัติ',
+                    'c': 'ขอให้ merge การเปลี่ยนแปลงจาก branch เข้า main และเปิดพื้นที่ให้ทำ code review',
+                    'd': 'ใช้แทนการ commit'
+                },
+                correct: 'c',
+                explanation: 'Pull Request เป็นกลไกสำหรับขอให้ merge โค้ดจาก branch หนึ่งเข้าไปยังอีก branch หนึ่ง พร้อมทั้งเปิดโอกาสให้ทีมทำ code review, แสดงความคิดเห็น และตรวจสอบก่อนการ merge'
+            },
+            {
+                id: 21, type: 'mcq',
+                question: 'ข้อ 21: ข้อความของ Brooks\'s Law กล่าวไว้ว่าอะไร',
+                options: {
+                    'a': 'ไม่ต้องสื่อสารก็ทำงานทีมได้',
+                    'b': 'ทำงานคนเดียวดีที่สุดเสมอ',
+                    'c': 'เพิ่มคนเข้าโครงการที่ล่าช้าจะทำให้เสร็จเร็วขึ้น',
+                    'd': 'เพิ่มคนเข้าโครงการที่ล่าช้าจะทำให้ยิ่งล่าช้า'
+                },
+                correct: 'd',
+                explanation: 'Brooks\'s Law ระบุว่า "Adding manpower to a late software project makes it later" เพราะคนใหม่ต้องใช้เวลาเรียนรู้และทำให้คนเดิมต้องใช้เวลาสอน ซึ่งลดประสิทธิภาพโดยรวม'
+            },
+            {
+                id: 22, type: 'mcq',
+                question: 'ข้อ 22: ใน workflow แบบ fork and pull remote ชื่อ upstream มักใช้แทนอะไร',
+                options: {
+                    'a': 'เครื่องของเรา (local)',
+                    'b': 'branch ที่ยังไม่ push',
+                    'c': 'repo ต้นทางหลัก (original repository)',
+                    'd': 'repo ที่เป็น fork ของเรา'
+                },
+                correct: 'c',
+                explanation: 'ใน fork workflow, upstream หมายถึง repository ต้นฉบับที่เรา fork มา ในขณะที่ origin คือ fork repository ของเราเอง'
+            },
+            {
+                id: 23, type: 'mcq',
+                question: 'ข้อ 23: การแตกกิ่งแบบ feature branch มีจุดประสงค์หลักอะไร',
+                options: {
+                    'a': 'ลดจำนวนการทดสอบที่ต้องทำ',
+                    'b': 'ทำให้ทุกคน commit ลง main โดยตรง',
+                    'c': 'แยกงานฟีเจอร์ออกจาก main เพื่อไม่ให้กระทบเวอร์ชันที่เสถียร',
+                    'd': 'ทำให้ merge conflict เกิดบ่อยขึ้น'
+                },
+                correct: 'c',
+                explanation: 'Feature branch ช่วยแยกการพัฒนาฟีเจอร์ใหม่ออกจาก main branch ทำให้ main คงเป็นเวอร์ชันที่เสถียรและพร้อมใช้งาน ในขณะที่ฟีเจอร์ใหม่สามารถพัฒนาและทดสอบได้อย่างอิสระ'
+            },
+            {
+                id: 24, type: 'mcq',
+                question: 'ข้อ 24: คำสั่งใดใช้สร้าง branch ใหม่และสลับไป branch นั้นทันที',
+                options: {
+                    'a': 'git tag v1.0.0',
+                    'b': 'git merge feature/login',
+                    'c': 'git pull origin main',
+                    'd': 'git checkout -b feature/login'
+                },
+                correct: 'd',
+                explanation: 'คำสั่ง git checkout -b [branch-name] จะสร้าง branch ใหม่และสลับไปยัง branch นั้นในคำสั่งเดียว (-b ย่อมาจาก branch)'
+            },
+            {
+                id: 25, type: 'mcq',
+                question: 'ข้อ 25: pitfall ที่กล่าวถึงคือการแบ่งงานแบบใดที่ไม่แนะนำ',
+                options: {
+                    'a': 'แบ่งงานตาม software stack เช่น front-end/back-end',
+                    'b': 'ให้แต่ละคนทำครบทุกอย่างของ feature',
+                    'c': 'ทำงานแบบ pair programming ร่วมกัน',
+                    'd': 'แบ่งงานตาม feature หรือ story'
+                },
+                correct: 'a',
+                explanation: 'การแบ่งงานตาม technical layer (front-end/back-end) มักทำให้เกิดการพึ่งพาและรอคอยกัน แนะนำให้แบ่งงานตาม feature แทน เพื่อให้แต่ละคนหรือทีมสามารถทำงานได้อย่างอิสระและส่งมอบคุณค่าได้เร็วขึ้น'
+            },
+            {
+                id: 26, type: 'mcq',
+                question: 'ข้อ 26: ใน Scrum มักใช้คำว่าอะไรแทนคำว่า iteration',
+                options: {
+                    'a': 'Release',
+                    'b': 'Epic',
+                    'c': 'Milestone',
+                    'd': 'Sprint'
+                },
+                correct: 'd',
+                explanation: 'ใน Scrum ใช้คำว่า Sprint แทน iteration ซึ่งเป็นช่วงเวลาที่กำหนดไว้สำหรับพัฒนาและส่งมอบงานที่สามารถใช้งานได้'
+            },
+            {
+                id: 27, type: 'mcq',
+                question: 'ข้อ 27: merge conflict มักเกิดจากสาเหตุใด',
+                options: {
+                    'a': 'มีการสร้าง tag มากเกินไป',
+                    'b': 'commit message เหมือนกัน',
+                    'c': 'ใช้ชื่อ branch ยาวเกินไป',
+                    'd': 'สองฝั่งแก้ไขบรรทัดเดียวกันหรือบริเวณเดียวกันของไฟล์เดียวกัน'
+                },
+                correct: 'd',
+                explanation: 'Merge conflict เกิดขึ้นเมื่อมีการแก้ไขโค้ดในบรรทัดเดียวกันหรือบริเวณใกล้เคียงกันของไฟล์เดียวกันจากสอง branch ที่ต่างกัน Git ไม่สามารถตัดสินใจได้ว่าควรเก็บเวอร์ชันไหน'
+            },
+            {
+                id: 28, type: 'mcq',
+                question: 'ข้อ 28: คำว่า standup สื่อถึงอะไรในบริบท daily Scrum',
+                options: {
+                    'a': 'ประชุมให้สั้นพอที่ทุกคนยังยืนได้ตลอดการประชุม',
+                    'b': 'ต้องมีเฉพาะหัวหน้าทีมพูด',
+                    'c': 'ต้องยืนตลอดวันเพื่อเพิ่ม productivity',
+                    'd': 'ต้องประชุมเฉพาะตอนเช้าเท่านั้น'
+                },
+                correct: 'a',
+                explanation: 'Standup meeting หมายถึงการประชุมที่สั้นมากจนทุกคนสามารถยืนได้ตลอดการประชุม (ประมาณ 15 นาที) เพื่อให้การประชุมกระชับและมีประสิทธิภาพ'
+            },
+            {
+                id: 29, type: 'mcq',
+                question: 'ข้อ 29: protected branch ช่วยเรื่องใดมากที่สุด',
+                options: {
+                    'a': 'กันการ push ตรงเข้า main และบังคับใช้ PR/ตรวจสอบก่อน merge',
+                    'b': 'ทำให้ไม่ต้องใช้ CI',
+                    'c': 'ทำให้ git ทำงานเร็วขึ้นอัตโนมัติ',
+                    'd': 'ลดจำนวน branch ให้เหลือ branch เดียว'
+                },
+                correct: 'a',
+                explanation: 'Protected branch ป้องกันไม่ให้มีการ push โค้ดตรงเข้า main branch โดยบังคับให้ต้องผ่าน Pull Request และการรีวิวก่อน ช่วยรักษาคุณภาพของโค้ดใน main branch'
+            },
+            {
+                id: 30, type: 'mcq',
+                question: 'ข้อ 30: Scrum พึ่งพาแนวคิดใดเกี่ยวกับการจัดการทีม',
+                options: {
+                    'a': 'การทำงานแบบแยกเดี่ยวของสมาชิก',
+                    'b': 'การสั่งการแบบ command and control',
+                    'c': 'การจัดการตัวเองของทีม (self-organization)',
+                    'd': 'การจัดการแบบรวมศูนย์โดยผู้จัดการโครงการ'
+                },
+                correct: 'c',
+                explanation: 'Scrum เน้นการจัดการตัวเองของทีม (self-organization) ทีมมีอิสระในการตัดสินใจว่าจะทำงานอย่างไรเพื่อให้บรรลุเป้าหมาย โดยไม่ต้องมีการสั่งการแบบ top-down'
+            },
+            {
+                id: 31, type: 'mcq',
+                question: 'ข้อ 31: ข้อใดเป็นข้อควรระวังสำคัญของการใช้ rebase',
+                options: {
+                    'a': 'rebase ทำให้ build ไม่ได้เสมอ',
+                    'b': 'rebase ทำให้ไฟล์หายจาก repo',
+                    'c': 'rebase ใช้ได้เฉพาะกับไฟล์ .java',
+                    'd': 'ไม่ควร rebase branch ที่มีคนอื่นใช้งานร่วมกันแล้ว เพราะ commit hash จะเปลี่ยน'
+                },
+                correct: 'd',
+                explanation: 'Rebase จะเปลี่ยน commit hash ทำให้ประวัติเปลี่ยนไป ถ้า rebase branch ที่มีคนอื่นใช้งานร่วมกันอยู่ จะทำให้เกิดปัญหาความไม่สอดคล้องกันของประวัติ ควรใช้ rebase เฉพาะกับ branch ส่วนตัวเท่านั้น'
+            },
             
             // ==========================================
             // ส่วนที่ 2: อัตนัยเรื่องโค้ด (Written)
