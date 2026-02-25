@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ Software Engineering & Project Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f8fafc;
+        }
+        .explanation-enter {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-out;
+        }
+        .explanation-enter-active {
+            max-height: 1000px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+        .code-block {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen pb-16">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow-lg sticky top-0 z-10">
+        <div class="max-w-4xl mx-auto px-6 py-6">
+            <h1 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
+                <i data-lucide="book-open-check" class="w-8 h-8 md:w-10 md:h-10"></i>
+                แบบทดสอบ Software Engineering
+            </h1>
+            <p class="mt-2 text-blue-100 text-sm md:text-base">ฝึกทำข้อสอบ ปรนัย และ อัตนัย พร้อมเฉลยและเหตุผลประกอบทันที</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 mt-8 space-y-8" id="quiz-container">
+        <!-- Content will be injected here by JavaScript -->
+    </main>
+
+    <script>
+        // ข้อมูลข้อสอบทั้งหมด
+        const quizData = [
+            // ==========================================
+            // ส่วนที่ 1: ปรนัย (MCQ)
+            // ==========================================
+            {
+                id: 1, type: 'mcq',
+                question: 'ข้อ 1: แนวทางทั่วไปในการแก้ merge conflict ที่ถูกต้องคือข้อใด',
+                options: {
+                    'a': 'merge ซ้ำไปเรื่อยจนหายเอง',
+                    'b': 'ลบ repository แล้ว clone ใหม่ทุกครั้ง',
+                    'c': 'เปิดไฟล์ที่มี conflict เลือก/รวมส่วนที่ถูกต้อง แล้ว commit ผลลัพธ์',
+                    'd': 'ปิดการใช้ git เพื่อไม่ให้ conflict'
+                },
+                correct: 'c',
+                explanation: 'การแก้ merge conflict ที่ถูกต้องคือการเปิดไฟล์ที่ระบบแจ้งว่ามี conflict ขึ้นมา ทำการลบเครื่องหมาย conflict ออก เลือกหรือผสมผสานโค้ดส่วนที่ถูกต้องเข้าด้วยกัน แล้วจึงบันทึกและ commit'
+            },
+            {
+                id: 2, type: 'mcq',
+                question: 'ข้อ 2: คำว่า "psychological safety" ในทีม หมายถึงอะไร',
+                options: {
+                    'a': 'สมาชิกกล้าพูดความเห็นโดยไม่กลัวถูกอับอายหรือถูกตำหนิ',
+                    'b': 'ทีมต้องมีคนอาวุโสเยอะที่สุด',
+                    'c': 'ทีมต้องไม่มี conflict เลย'
+                },
+                correct: 'a',
+                explanation: 'Psychological safety คือสภาพแวดล้อมที่สมาชิกในทีมสามารถแสดงความคิดเห็น ตั้งคำถาม หรือยอมรับข้อผิดพลาดได้ โดยไม่ต้องกังวลว่าจะถูกลงโทษ หรือเยาะเย้ย'
+            },
+            {
+                id: 3, type: 'mcq',
+                question: 'ข้อ 3: fast forward merge จะเกิดขึ้นเมื่อใด',
+                options: {
+                    'a': 'เมื่อมีการสร้าง tag ก่อน merge เท่านั้น',
+                    'b': 'เมื่อมีการแก้ไฟล์เดียวกันคนละบรรทัดเสมอ',
+                    'c': 'เมื่อ rebase แล้วจะเกิด conflict ทุกครั้ง',
+                    'd': 'เมื่อ main ไม่มี commit ใหม่หลังแยกกิ่ง และแค่เลื่อน pointer ไปข้างหน้า'
+                },
+                correct: 'd',
+                explanation: 'Fast-forward merge เกิดขึ้นเมื่อกิ่งหลัก (main) ไม่มีการเปลี่ยนแปลงใดๆ เพิ่มเติมนับตั้งแต่แตกกิ่งย่อย (branch) ออกไป Git จึงแค่เลื่อน pointer ของกิ่งหลักไปที่ commit ล่าสุดได้เลย'
+            },
+            {
+                id: 4, type: 'mcq',
+                question: 'ข้อ 4: บทบาทใดใน Scrum ที่เป็น "เสียงของลูกค้า" และจัดลำดับความสำคัญของ user stories',
+                options: {
+                    'a': 'Product Owner',
+                    'b': 'Scrum Lead',
+                    'c': 'Project Sponsor',
+                    'd': 'Team'
+                },
+                correct: 'a',
+                explanation: 'Product Owner (PO) ทำหน้าที่เสมือนตัวแทนของลูกค้า มีหน้าที่รับผิดชอบวิสัยทัศน์ของโปรดักต์ และเป็นผู้มีอำนาจตัดสินใจในการจัดลำดับความสำคัญของ Product Backlog'
+            },
+            {
+                id: 5, type: 'mcq',
+                question: 'ข้อ 5: protected branch ช่วยเรื่องใดมากที่สุด',
+                options: {
+                    'a': 'ทำให้ไม่ต้องใช้ CI',
+                    'b': 'กันการ push ตรงเข้า main และบังคับใช้ PR/ตรวจสอบก่อน merge',
+                    'c': 'ลดจำนวน branch ให้เหลือ branch เดียว',
+                    'd': 'ทำให้ git ทำงานเร็วขึ้นอัตโนมัติ'
+                },
+                correct: 'b',
+                explanation: 'Protected branch ป้องกันไม่ให้มีการเขียนทับหรือ push โค้ดตรงๆ เข้าสู่กิ่งที่สำคัญ มักจะบังคับให้ต้องทำ Pull Request และผ่านการรีวิวหรือเทสต์ก่อนเสมอ'
+            },
+            
+            // ==========================================
+            // ส่วนที่ 2: อัตนัยเรื่องโค้ด (Written)
+            // ==========================================
+            {
+                id: 16, type: 'written', section: 'coding',
+                question: 'ข้อ 16: จากโปรแกรมที่กำหนดให้ผิดหลักการออกแบบ (design patterns) SOLID ข้อใด จงอธิบายวิธีการแก้ไขให้ถูกต้อง',
+                code: `class Moviegoer\n  attr_accessor :name, :street, :phone_number, :zipcode\n  validates :phone_number\n  validates :zipcode\n  \n  def format_phone_number\n  end\n  \n  def verify_zipcode\n  end\n  \n  def format_address(street, phone_number, zipcode)\n    # data clump\n    # do formatting, call format_phone_number and verify_zipcode\n  end\nend`,
+                solution: `โปรแกรมนี้ละเมิดหลัก <strong>SRP (Single Responsibility Principle)</strong><br><br>
+<strong>ปัญหา:</strong> Class <code>Moviegoer</code> มีหน้าที่รับผิดชอบมากเกินไป ทั้งจัดการข้อมูลผู้ใช้ จัดการเบอร์โทร และตรวจสอบรหัสไปรษณีย์ แถมยังเกิด Data Clump ที่ส่ง parameter เป็นกลุ่มเดียวกันเสมอ<br><br>
+<strong>วิธีแก้ไข:</strong> ควรแยกความรับผิดชอบ (Extract Class) ออกไปให้ชัดเจน สร้างคลาส <code>Address</code> จัดการเรื่อง <code>street, zipcode</code> และคลาส <code>Contact</code> จัดการเบอร์โทร ส่วน <code>Moviegoer</code> เก็บแค่ตัวแปร Object เหล่านั้น`
+            },
+            {
+                id: 17, type: 'written', section: 'coding',
+                question: 'ข้อ 17: จง refactor โปรแกรมภาษา Ruby ข้างต้น เพื่อไม่ให้เกิด code smell และทำงานได้ถูกต้อง',
+                solution: `<strong>โค้ดที่ Refactor แล้ว:</strong>
+<div class="code-block">
+class Address
+  attr_accessor :street, :zipcode
+  def initialize(street, zipcode)
+    @street = street
+    @zipcode = zipcode
+  end
+  def verify_zipcode; end
+  def format_address; end
+end
+
+class ContactInfo
+  attr_accessor :phone_number
+  def initialize(phone_number)
+    @phone_number = phone_number
+  end
+  def format_phone_number; end
+end
+
+class Moviegoer
+  attr_accessor :name, :address, :contact
+  def initialize(name, address, contact)
+    @name = name
+    @address = address
+    @contact = contact
+  end
+end
+</div>`
+            },
+
+            // ==========================================
+            // ส่วนที่ 3: อัตนัยเรื่อง Jira/Trello (Written)
+            // ==========================================
+            
+            // --- กลุ่มที่ 1 (ข้อ 1-5) ---
+            {
+                id: 101, type: 'written', section: 'jira_trello', group: 1,
+                question: 'ข้อ 1: จากภาพ Jira board ของโปรเจค "Web design process" จงอธิบายว่ามี Status (สถานะ) ใดบ้างที่ปรากฏในโปรเจคนี้ และแต่ละ Status มีความหมายอย่างไร',
+                solution: `จากภาพมี Status ทั้งหมด 7 สถานะ ได้แก่:<br>
+                1. <strong>CONCEPTING</strong> - ขั้นตอนการคิดแนวคิด/วางแผนเบื้องต้น<br>
+                2. <strong>TO DO</strong> - งานที่รอดำเนินการ<br>
+                3. <strong>IDEATING</strong> - ขั้นตอนการระดมความคิด/ออกแบบแนวคิด<br>
+                4. <strong>IN REVIEW</strong> - งานที่อยู่ระหว่างการตรวจสอบ<br>
+                5. <strong>DESIGN</strong> - ขั้นตอนการออกแบบ<br>
+                6. <strong>TESTING</strong> - ขั้นตอนการทดสอบ<br>
+                7. <strong>LAUNCHED</strong> - งานที่เสร็จสมบูรณ์และเปิดตัวแล้ว`
+            },
+            {
+                id: 102, type: 'written', section: 'jira_trello', group: 1,
+                question: 'ข้อ 2: จากข้อมูลใน Jira board จงวิเคราะห์ว่าสมาชิกในทีมแต่ละคนมีบทบาทหน้าที่อย่างไร และงานใดที่มีความสำคัญสูงสุด (Priority: Highest)',
+                solution: `<strong>การกระจายงาน:</strong><br>
+                1. <strong>Alana Song</strong> - รับผิดชอบงานหลากหลาย เช่น รวบรวมข้อมูล, วางแผนโครงสร้าง (งาน Planning/Management)<br>
+                2. <strong>Je Yan</strong> - รับผิดชอบงานด้านเทคนิค เช่น จดโดเมน, ติดตั้งระบบ<br>
+                3. <strong>Amar Sundaram</strong> - รับผิดชอบงานด้าน Design และ Content<br>
+                * งานที่มีความสำคัญสูงสุดมักจะเป็นงานพื้นฐานที่ต้องทำให้เสร็จก่อน เช่น การจดโดเมน หรือตั้งค่าโฮสติ้ง`
+            },
+            {
+                id: 103, type: 'written', section: 'jira_trello', group: 1,
+                question: 'ข้อ 3: อธิบายความสำคัญของการกำหนด Priority ใน Jira board ว่าส่งผลต่อการทำงานของทีมอย่างไร',
+                solution: `การกำหนด Priority ช่วยให้ทีมรู้ว่า <strong>ควรโฟกัสทำ Task ใดก่อน</strong> เพื่อไม่ให้เกิดคอขวด (Bottleneck) ในโปรเจค เช่น งานที่ต้องรอให้เสร็จก่อนจึงจะทำขั้นตอนต่อไปได้ ควรตั้งเป็น Highest เพื่อให้สำเร็จตามกำหนดเวลา`
+            },
+            {
+                id: 104, type: 'written', section: 'jira_trello', group: 1,
+                question: 'ข้อ 4: การย้าย Task จาก "IN REVIEW" กลับไปที่ "DESIGN" หรือ "TO DO" เกิดขึ้นในกรณีใดได้บ้าง',
+                solution: `เกิดขึ้นได้เมื่อ <strong>งานนั้นไม่ผ่านการตรวจสอบ (Failed Review)</strong> พบข้อบกพร่อง (Bug) ที่ต้องการให้ผู้รับผิดชอบกลับไปแก้ไขใหม่ หรือมีการเปลี่ยน Requirement กะทันหัน`
+            },
+            {
+                id: 105, type: 'written', section: 'jira_trello', group: 1,
+                question: 'ข้อ 5: หากมีสมาชิกใหม่เข้ามาในทีม Jira board นี้จะช่วยให้เขาเข้าใจภาพรวมของโปรเจคได้อย่างไร',
+                solution: `Jira board จะทำหน้าที่เป็น <strong>Single Source of Truth</strong> แสดงภาพรวมทั้งหมด สมาชิกใหม่สามารถดูได้ทันทีว่า มีงานอะไรบ้าง, ใครกำลังทำอะไร, งานอยู่ในขั้นตอนไหน ทำให้ Onboard เข้าทีมได้อย่างรวดเร็ว`
+            },
+            
+            // --- กลุ่มที่ 2 (ข้อ 6-10) ---
+            {
+                id: 106, type: 'written', section: 'jira_trello', group: 2,
+                question: 'ข้อ 6: จากข้อมูล จงอธิบายขั้นตอนหลักในการเตรียมการและ Setup Trello เพื่อ Migrate ข้อมูลจาก Jira',
+                solution: `<strong>ขั้นตอนหลัก:</strong><br>
+                1. <strong>เตรียมการ:</strong> ประเมินเหตุผลการย้าย (เช่น ลดความซับซ้อน), วางแผน และสำรองข้อมูล<br>
+                2. <strong>Setup Trello:</strong> สร้าง Board ใหม่, กำหนด Lists (คอลัมน์) ให้ตรงกับ Workflow และเปิดใช้ Power-Ups ที่จำเป็น`
+            },
+            {
+                id: 107, type: 'written', section: 'jira_trello', group: 2,
+                question: 'ข้อ 7: เครื่องมือหรือวิธีการใดบ้างที่ใช้ในการ Export ข้อมูลจาก Jira เพื่อนำเข้า (Import) สู่ Trello',
+                solution: `ทำได้โดย <strong>Export ข้อมูลจาก Jira ให้อยู่ในรูปแบบไฟล์ CSV หรือ JSON</strong> จากนั้นใช้ <strong>Trello Importer</strong> หรือเครื่องมือ Third-party (เช่น Zapier) เพื่อนำเข้าสู่ Trello`
+            },
+            {
+                id: 108, type: 'written', section: 'jira_trello', group: 2,
+                question: 'ข้อ 8: การ Migrate จาก Jira ไป Trello มีข้อควรระวังเกี่ยวกับการ "สูญเสีย Features" อย่างไรบ้าง',
+                solution: `Trello เน้นความเรียบง่าย จึงมี Features น้อยกว่า ข้อควรระวังคือ:<br>
+                - <strong>Sprint Management:</strong> ฟีเจอร์จัดการ Sprint ไม่สมบูรณ์เท่า Jira<br>
+                - <strong>Reporting:</strong> การทำรายงานและกราฟวัดผลต่างๆ (เช่น Burndown chart) มีจำกัดกว่า`
+            },
+            {
+                id: 109, type: 'written', section: 'jira_trello', group: 2,
+                question: 'ข้อ 9: หากทีมมีความคุ้นเคยกับ Jira มาก การย้ายไปใช้ Trello อาจทำให้เกิดปัญหาใด และควรรับมืออย่างไร',
+                solution: `<strong>ปัญหา:</strong> ทีมอาจรู้สึกต่อต้าน (Resistance to change) เพราะ Trello มี Features น้อยกว่า ทำงานซับซ้อนแบบเดิมไม่ได้<br>
+                <strong>วิธีรับมือ:</strong> ปรับแต่ง Workflow ให้เรียบง่ายขึ้น โฟกัสเฉพาะกระบวนการที่จำเป็นจริงๆ และสื่อสารถึงข้อดีเรื่องความรวดเร็วและใช้งานง่าย`
+            },
+            {
+                id: 110, type: 'written', section: 'jira_trello', group: 2,
+                question: 'ข้อ 10: "การใช้ทั้งสองเครื่องมือร่วมกัน" (Jira และ Trello) มีแนวทางที่เหมาะสมอย่างไร',
+                solution: `แยกใช้ตามบริบทของทีม:<br>
+                - <strong>ใช้ Trello</strong> สำหรับทีม Non-tech (เช่น Marketing, HR, Design) ที่ต้องการกระดานที่เรียบง่าย ยืดหยุ่น<br>
+                - <strong>ใช้ Jira</strong> สำหรับทีม Development ที่ต้องการระบบติดตาม Issue, จัดการ Sprint และ Workflow ที่รัดกุมกว่า`
+            }
+        ];
+
+        // ฟังก์ชันสร้าง UI สำหรับข้อเขียน
+        function createWrittenQuestionHTML(q) {
+            let codeHtml = q.code ? `<div class="code-block">${q.code}</div>` : '';
+            return `
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6 border border-gray-100">
+                    <h3 class="font-semibold text-lg text-gray-800 mb-3">${q.question}</h3>
+                    ${codeHtml}
+                    <div class="mt-4">
+                        <textarea class="w-full bg-gray-50 border border-gray-200 rounded-lg p-4 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors min-h-[120px] text-gray-700" placeholder="ทดลองพิมพ์คำตอบหรือแนวคิดของคุณที่นี่..."></textarea>
+                    </div>
+                    <button onclick="toggleSolution(${q.id})" id="btn-sol-${q.id}" class="mt-4 bg-gray-800 hover:bg-gray-700 text-white font-medium py-2.5 px-5 rounded-lg transition-colors flex items-center gap-2 shadow-sm">
+                        <i data-lucide="eye" class="w-4 h-4"></i> ดูเฉลยและเหตุผล
+                    </button>
+                    
+                    <div id="solution-${q.id}" class="explanation-enter rounded-lg p-5 bg-green-50 border border-green-200 mt-4 hidden">
+                        <h4 class="font-bold text-green-800 flex items-center gap-2 mb-3 pb-2 border-b border-green-200">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i> แนวคำตอบที่ถูกต้อง
+                        </h4>
+                        <div class="text-gray-800 leading-relaxed">
+                            ${q.solution}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ฟังก์ชันสร้าง UI ทั้งหมด
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            
+            const mcqs = quizData.filter(q => q.type === 'mcq');
+            const codingWrittens = quizData.filter(q => q.type === 'written' && q.section === 'coding');
+            const projectWrittensGroup1 = quizData.filter(q => q.section === 'jira_trello' && q.group === 1);
+            const projectWrittensGroup2 = quizData.filter(q => q.section === 'jira_trello' && q.group === 2);
+
+            let html = ``;
+
+            // =====================================
+            // ส่วนที่ 1: ปรนัย
+            // =====================================
+            html += `
+                <div class="mb-6 mt-4 flex items-center gap-3">
+                    <div class="w-2 h-8 bg-blue-500 rounded-full"></div>
+                    <h2 class="text-2xl font-bold text-gray-800">ส่วนที่ 1: ปรนัย (Multiple Choice)</h2>
+                </div>`;
+            
+            mcqs.forEach(q => {
+                let optionsHtml = '';
+                for (const [key, value] of Object.entries(q.options)) {
+                    optionsHtml += `
+                        <label class="flex items-start gap-3 p-3.5 rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 cursor-pointer transition-all option-label-${q.id}" id="label-${q.id}-${key}">
+                            <input type="radio" name="question-${q.id}" value="${key}" class="mt-1.5 w-4 h-4 text-blue-600 focus:ring-blue-500" onchange="checkAnswer(${q.id}, '${key}')">
+                            <span class="text-gray-700 leading-relaxed"><span class="font-semibold uppercase text-blue-800 mr-2">${key}.</span> ${value}</span>
+                        </label>
+                    `;
+                }
+                html += `
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6 border border-gray-100" id="card-${q.id}">
+                        <h3 class="font-semibold text-lg text-gray-800 mb-5 leading-relaxed">${q.question}</h3>
+                        <div class="flex flex-col gap-3">
+                            ${optionsHtml}
+                        </div>
+                        <div id="feedback-${q.id}" class="explanation-enter rounded-lg p-5 bg-blue-50 border border-blue-100 hidden mt-5"></div>
+                    </div>
+                `;
+            });
+
+            // =====================================
+            // ส่วนที่ 2: อัตนัย - โค้ดดิ้ง
+            // =====================================
+            html += `
+                <div class="mb-6 mt-12 flex items-center gap-3">
+                    <div class="w-2 h-8 bg-purple-500 rounded-full"></div>
+                    <h2 class="text-2xl font-bold text-gray-800">ส่วนที่ 2: อัตนัย - การเขียนโค้ด (SOLID & Refactoring)</h2>
+                </div>`;
+            
+            codingWrittens.forEach(q => {
+                html += createWrittenQuestionHTML(q);
+            });
+
+            // =====================================
+            // ส่วนที่ 3: อัตนัย - Jira & Trello
+            // =====================================
+            html += `
+                <div class="mb-6 mt-12 flex items-center gap-3">
+                    <div class="w-2 h-8 bg-orange-500 rounded-full"></div>
+                    <h2 class="text-2xl font-bold text-gray-800">ส่วนที่ 3: อัตนัย - Project Management (Jira & Trello)</h2>
+                </div>`;
+            
+            // --- รูปที่ 1 สำหรับข้อ 1-5 ---
+            html += `
+                <div class="bg-white rounded-xl shadow-md p-6 mb-8 border border-gray-100">
+                    <img src="1to5.png" alt="ภาพ Jira Board สำหรับใช้ประกอบการตอบคำถามอัตนัยข้อ 1 ถึงข้อ 5" class="w-full h-auto rounded-lg shadow-sm">
+                    <p class="text-sm text-gray-600 text-center mt-4">ภาพ Jira Board สำหรับใช้ประกอบการตอบคำถามอัตนัยข้อ 1 ถึงข้อ 5</p>
+                </div>
+            `;
+            projectWrittensGroup1.forEach(q => { html += createWrittenQuestionHTML(q); });
+
+            // --- รูปที่ 2 สำหรับข้อ 6-10 ---
+            html += `
+                <div class="bg-white rounded-xl shadow-md p-6 mb-8 mt-12 border border-gray-100">
+                    <img src="6to10.png" alt="ภาพขั้นตอนการ Migrate ระบบจาก Jira สู่ Trello สำหรับใช้ประกอบการตอบคำถามอัตนัยข้อ 6 ถึงข้อ 10" class="w-full h-auto rounded-lg shadow-sm">
+                    <p class="text-sm text-gray-600 text-center mt-4">ภาพขั้นตอนการ Migrate ระบบจาก Jira สู่ Trello สำหรับใช้ประกอบการตอบคำถามอัตนัยข้อ 6 ถึงข้อ 10</p>
+                </div>
+            `;
+            projectWrittensGroup2.forEach(q => { html += createWrittenQuestionHTML(q); });
+
+
+            container.innerHTML = html;
+            lucide.createIcons();
+        }
+
+        // ตรวจคำตอบปรนัย
+        window.checkAnswer = function(questionId, selectedKey) {
+            const question = quizData.find(q => q.id === questionId);
+            const isCorrect = selectedKey === question.correct;
+            
+            // ล็อกตัวเลือกทั้งหมดของข้อนั้น
+            const inputs = document.querySelectorAll(`input[name="question-${questionId}"]`);
+            inputs.forEach(input => input.disabled = true);
+
+            // เอาสไตล์ hover ออก
+            const labels = document.querySelectorAll(`.option-label-${questionId}`);
+            labels.forEach(label => {
+                label.classList.remove('hover:bg-blue-50', 'hover:border-blue-200', 'cursor-pointer');
+                label.classList.add('opacity-60', 'cursor-not-allowed', 'bg-gray-50');
+            });
+
+            // ใส่สีให้ตัวที่เลือกและตัวที่ถูก
+            const selectedLabel = document.getElementById(`label-${questionId}-${selectedKey}`);
+            const correctLabel = document.getElementById(`label-${questionId}-${question.correct}`);
+            
+            selectedLabel.classList.remove('opacity-60', 'bg-gray-50');
+            correctLabel.classList.remove('opacity-60', 'bg-gray-50');
+
+            if (isCorrect) {
+                selectedLabel.classList.add('bg-green-100', 'border-green-500', 'shadow-sm');
+                selectedLabel.innerHTML += `<i data-lucide="check" class="text-green-600 ml-auto w-6 h-6"></i>`;
+            } else {
+                selectedLabel.classList.add('bg-red-100', 'border-red-400');
+                selectedLabel.innerHTML += `<i data-lucide="x" class="text-red-600 ml-auto w-6 h-6"></i>`;
+                
+                correctLabel.classList.add('bg-green-50', 'border-green-400', 'shadow-sm');
+                correctLabel.innerHTML += `<i data-lucide="check" class="text-green-600 ml-auto w-6 h-6"></i>`;
+            }
+
+            // แสดงคำอธิบาย
+            const feedbackDiv = document.getElementById(`feedback-${questionId}`);
+            const feedbackTitle = isCorrect 
+                ? `<span class="text-green-700 font-bold flex items-center gap-2 text-lg"><i data-lucide="check-circle" class="w-6 h-6"></i> ยอดเยี่ยม! ตอบถูกต้อง</span>` 
+                : `<span class="text-red-700 font-bold flex items-center gap-2 text-lg"><i data-lucide="x-circle" class="w-6 h-6"></i> ตอบผิดครับ คำตอบที่ถูกต้องคือข้อ ${question.correct.toUpperCase()}</span>`;
+            
+            feedbackDiv.innerHTML = `
+                <div class="mb-3 pb-2 border-b border-blue-200/50">${feedbackTitle}</div>
+                <div class="text-gray-800 leading-relaxed"><strong class="text-blue-900">เหตุผลประกอบ:</strong> ${question.explanation}</div>
+            `;
+            feedbackDiv.classList.remove('hidden');
+            
+            setTimeout(() => {
+                feedbackDiv.classList.add('explanation-enter-active');
+            }, 10);
+
+            lucide.createIcons();
+        };
+
+        // แสดง/ซ่อน เฉลยอัตนัย
+        window.toggleSolution = function(questionId) {
+            const solutionDiv = document.getElementById(`solution-${questionId}`);
+            const btn = document.getElementById(`btn-sol-${questionId}`);
+            
+            if (solutionDiv.classList.contains('hidden')) {
+                solutionDiv.classList.remove('hidden');
+                setTimeout(() => {
+                    solutionDiv.classList.add('explanation-enter-active');
+                }, 10);
+                btn.innerHTML = `<i data-lucide="eye-off" class="w-4 h-4"></i> ซ่อนเฉลย`;
+                btn.classList.replace('bg-gray-800', 'bg-gray-600');
+            } else {
+                solutionDiv.classList.remove('explanation-enter-active');
+                setTimeout(() => {
+                    solutionDiv.classList.add('hidden');
+                }, 400);
+                btn.innerHTML = `<i data-lucide="eye" class="w-4 h-4"></i> ดูเฉลยและเหตุผล`;
+                btn.classList.replace('bg-gray-600', 'bg-gray-800');
+            }
+            lucide.createIcons();
+        };
+
+        // สั่งทำงานเมื่อโหลดหน้าเว็บเสร็จ
+        document.addEventListener('DOMContentLoaded', renderQuiz);
+
+    </script>
+</body>
+</html>
